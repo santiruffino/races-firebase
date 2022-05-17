@@ -1,0 +1,18 @@
+.example-container{
+  text-align: center
+}
+
+.form-container{
+  width: 100%;
+  /*margin: 50px auto 0;*/
+}
+
+.form-field{
+  /*width: 300px;*/
+  display: block
+}
+
+.button {
+  float: right;
+  width: 100%;
+}
