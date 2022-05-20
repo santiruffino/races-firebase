@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "",
+    apiKey: process.env["NG_APP_API_KEY"],
     authDomain: "races-app-534ee.firebaseapp.com",
     databaseURL: "https://races-app-534ee-default-rtdb.firebaseio.com",
     projectId: "races-app-534ee",
