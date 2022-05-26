@@ -1,28 +1,21 @@
-<div class="background" [style.background-image]="'url(assets/mountains.png)'">
-  <div class="login-container">
-    <div class="text-container">
-      <h1>Hey Stranger</h1>
-      <p>
-        Want to create an awesome account to access this awesome app? Go ahead
-        and click the button below!
-      </p>
-      <button mat-button routerLink="/register">Sign up</button>
-    </div>
+<div class="all-container">
+  <div fxFlex="70%" fxFlex.xs="95%" fxFlex.sm="95%" class="content">
+    <app-intro-card style="width: 100%"></app-intro-card>
     <div class="form-container">
-      <h1>Welcome to NgBytes Login</h1>
-      <button class="mat-raised-button" (click)="authService.googleAuth()">
-        Sign In with Google
-      </button>
+      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+      <cool-google-button color="dark" (click)="authService.googleAuth()">
+        Login with Google
+      </cool-google-button>
       <h5>Or sign in with your email</h5>
       <div>
         <form class="form" [formGroup]="form" (ngSubmit)="authService.signIn(email.value, password.value)">
           <mat-form-field class="form-control">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="text" required #email />
+            <input matInput formControlName="email" type="text" required #email/>
           </mat-form-field>
           <mat-form-field class="form-control">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" required #password />
+            <input matInput formControlName="password" type="password" required #password/>
           </mat-form-field>
           <div class="form-footer">
             <button mat-button type="submit">Submit</button>

@@ -33,6 +33,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { IntroCardComponent } from './shared/intro-card/intro-card.component';
+import { CoolSocialLoginButtonsModule } from "@angular-cool/social-login-buttons";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     SignUpComponent,
     AddRaceComponent,
     DashboardComponent,
-    EditRaceComponent
+    EditRaceComponent,
+    IntroCardComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -52,6 +55,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    CoolSocialLoginButtonsModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
