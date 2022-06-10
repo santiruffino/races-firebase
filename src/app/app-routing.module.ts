@@ -5,6 +5,7 @@ import { DashboardComponent } from "./races/dashboard/dashboard.component";
 import { EditRaceComponent } from "./races/edit-race/edit-race.component";
 import { RouterModule, Routes } from "@angular/router";
 import { SignInComponent } from "./auth/sign-in/sign-in.component";
+import { SignUpComponent } from "./auth/sign-up/sign-up.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/view-races', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'view-races', component: DashboardComponent },
   { path: 'edit-race/:id', component: EditRaceComponent },
   { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent },
 ];
 
 @NgModule({

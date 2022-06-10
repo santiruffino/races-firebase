@@ -19,7 +19,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { AuthService } from "./services/auth.service";
@@ -35,6 +35,9 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { IntroCardComponent } from './shared/intro-card/intro-card.component';
 import { CoolSocialLoginButtonsModule } from "@angular-cool/social-login-buttons";
+import { MatListModule } from "@angular/material/list";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -71,7 +74,11 @@ import { CoolSocialLoginButtonsModule } from "@angular-cool/social-login-buttons
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule,
+    MatChipsModule,
+    MatCheckboxModule,
+    FormsModule
   ],
   providers: [AuthService, GoogleAuthProvider],
   bootstrap: [AppComponent]

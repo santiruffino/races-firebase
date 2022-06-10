@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   loading: boolean = true;
   allRacesByYear: any;
   panelOpenState = false;
+  allComplete: boolean = true;
 
   constructor(
     public crudApi: CrudService,
@@ -45,10 +46,36 @@ export class DashboardComponent implements OnInit {
         this.allRaces.push(a as Race);
         this.loading = false;
       })
-      // this.groupRacesByYear();
-      this.groupRacesByYear2();
+      this.groupRacesByYear();
+      this.setSelectedYears()
     })
-    console.log(this.allRacesByYear);
+  }
+
+  updateAllComplete() {
+    this.allComplete = this.allRacesByYear.races != null && this.allRacesByYear.races.every((t: { show: any; }) => t.show);
+  }
+
+  someComplete(): boolean {
+    if (this.allRacesByYear.races == null) {
+      return false;
+    }
+    return this.allRacesByYear.races.filter((t: { show: any; }) => t.show).length > 0 && !this.allComplete;
+  }
+
+  setAll(completed: boolean) {
+    this.allComplete = completed;
+    if (this.allRacesByYear == null) {
+      return;
+    }
+    this.allRacesByYear.forEach((t: any) => {
+      t.show = completed
+    });
+  }
+
+  setSelectedYears() {
+    this.allRacesByYear.forEach((year: any) => {
+      year.show = true;
+    });
   }
 
   setRaceColor(race: Race) {
@@ -92,27 +119,6 @@ export class DashboardComponent implements OnInit {
   }
 
   groupRacesByYear() {
-    this.allRaces.sort((a, b) => {
-      return <any>new Date(b.date) - <any>new Date(a.date);
-    });
-
-    console.log(this.allRaces);
-
-    of(...this.allRaces).pipe(
-      groupBy((p: any) => {
-        p.color
-      }),
-      mergeMap(group$ =>
-        group$.pipe(reduce((acc, cur) => [...acc, cur], [`${ group$.key }`]))
-      ),
-      map(arr => ({date: arr[0], games: arr.slice(1)})),
-      toArray()
-    ).subscribe((p) => {
-      this.allRacesByYear = p;
-    });
-  }
-
-  groupRacesByYear2() {
     const groups = this.allRaces.reduce((groups: any, race) => {
       const date = new Date(race.date).getFullYear()
       if (!groups[date]) {
@@ -129,7 +135,11 @@ export class DashboardComponent implements OnInit {
         races: groups[date]
       };
     });
+    groupArrays.sort((a: any,b: any) => {
+      if (a.date < b.date) return 1;
+      if (a.date > b.date) return -1;
+      return 0;
+    })
     this.allRacesByYear = groupArrays;
-    console.log(groupArrays);
   }
 }

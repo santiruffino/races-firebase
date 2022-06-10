@@ -22,4 +22,15 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  signInClick() {
+    const signInButton = document.getElementById('signIn');
+    signInButton?.classList.add('right-panel-active');
+  }
+
+  signUpClick() {
+    this.router.navigate(['sign-up']);
+    const signUpButton = document.getElementById('signUp');
+    signUpButton?.classList.remove('right-panel-active');
+  }
 }

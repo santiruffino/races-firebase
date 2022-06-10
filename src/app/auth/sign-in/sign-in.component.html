@@ -1,27 +1,57 @@
+<!--<div class="all-container">-->
+<!--  <div fxFlex="70%" fxFlex.xs="95%" fxFlex.sm="95%" class="content">-->
+<!--    &lt;!&ndash;    <app-intro-card style="width: 100%"></app-intro-card>&ndash;&gt;-->
+<!--    <div class="form-container">-->
+<!--      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans"/>-->
+<!--      <cool-google-button color="dark" (click)="authService.googleAuth()">-->
+<!--        Login with Google-->
+<!--      </cool-google-button>-->
+<!--      <h5>Or sign in with your email</h5>-->
+<!--      <div class="fields-container">-->
+<!--        <form class="form" [formGroup]="form" (ngSubmit)="authService.signIn(email.value, password.value)">-->
+<!--          <mat-form-field class="form-control">-->
+<!--            <mat-label>Email</mat-label>-->
+<!--            <input matInput formControlName="email" type="text" required #email/>-->
+<!--          </mat-form-field>-->
+<!--          <mat-form-field class="form-control">-->
+<!--            <mat-label>Password</mat-label>-->
+<!--            <input matInput formControlName="password" type="password" required #password/>-->
+<!--          </mat-form-field>-->
+<!--          <div class="form-footer">-->
+<!--            <button mat-button type="submit">Submit</button>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 <div class="all-container">
-  <div fxFlex="70%" fxFlex.xs="95%" fxFlex.sm="95%" class="content">
-    <app-intro-card style="width: 100%"></app-intro-card>
-    <div class="form-container">
-      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-      <cool-google-button color="dark" (click)="authService.googleAuth()">
-        Login with Google
-      </cool-google-button>
-      <h5>Or sign in with your email</h5>
-      <div>
-        <form class="form" [formGroup]="form" (ngSubmit)="authService.signIn(email.value, password.value)">
-          <mat-form-field class="form-control">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="text" required #email/>
-          </mat-form-field>
-          <mat-form-field class="form-control">
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" required #password/>
-          </mat-form-field>
-          <div class="form-footer">
-            <button mat-button type="submit">Submit</button>
+  <div class="all-content">
+    <div class="container" id="container">
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <cool-google-button color="dark" (click)="authService.googleAuth()">
+              Login with Google
+            </cool-google-button>
           </div>
+          <span>or use your account</span>
+          <input type="email" placeholder="Email"/>
+          <input type="password" placeholder="Password"/>
+          <a href="#">Forgot your password?</a>
+          <button>Sign In</button>
         </form>
       </div>
+<!--      <div class="overlay-container">-->
+<!--        <div class="overlay">-->
+<!--          <div class="overlay-panel overlay-right">-->
+<!--            <h1>Hello, Friend!</h1>-->
+<!--            <p>Enter your personal details and start journey with us</p>-->
+<!--            <button class="ghost" id="signUp" (click)="signUpClick()">Sign Up</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 </div>
