@@ -1,7 +1,11 @@
 .example-headers-align {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  /*margin-top: 10px !important;*/
+  margin-bottom: 10px !important;
 }
+
+/*.mat-expanded {*/
+/*  margin-bottom: 10px !important;*/
+/*}*/
 
 .main-content {
   padding-top: 16px;

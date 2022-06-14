@@ -26,14 +26,11 @@
       <div *ngIf="loading" class="loading">
         <mat-spinner></mat-spinner>
       </div>
-      <mat-accordion class="example-headers-align" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+      <mat-accordion class="example-headers-align" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%" multi>
         <div>
           <mat-expansion-panel
             class="example-headers-align"
-            *ngFor="let year of allRacesByYear; let i = index"
-            [expanded]="i === 1"
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
+            *ngFor="let year of allRacesByYear; let i = index">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <b>{{year.date}}</b>
