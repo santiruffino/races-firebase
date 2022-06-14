@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 
 .container {
   position: relative;
@@ -6,8 +8,6 @@
   max-width: 300px;
   margin: 0 auto;
 }
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
   box-sizing: border-box;

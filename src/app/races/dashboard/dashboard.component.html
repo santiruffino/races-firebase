@@ -1,8 +1,13 @@
 <div class="all-container">
-  <div fxFlex="80%" fxFlex.xs="95%" fxFlex.sm="95%" class="content">
+  <div fxFlex="70%" fxFlex.xs="95%" fxFlex.sm="95%" class="content">
     <mat-toolbar class="toolbar">
       <span>Hi {{localstorageJSON.displayName}}! 👋</span>
       <span class="example-spacer"></span>
+      <!--      <div-->
+      <!--        [matMenuTriggerFor]="menu"-->
+      <!--        mat-card-avatar class="example-header-image"-->
+      <!--           [ngStyle]="{'background-image': 'url(' + localstorageJSON.photoURL + ')'}">-->
+      <!--      </div>-->
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -21,44 +26,58 @@
       <div *ngIf="loading" class="loading">
         <mat-spinner></mat-spinner>
       </div>
-      <section class="example-section">
-  <span class="example-list-section">
-    <mat-checkbox class="example-margin"
-                  [checked]="allComplete"
-                  [indeterminate]="someComplete()"
-                  (change)="setAll($event.checked)">
-      All Years
-    </mat-checkbox>
-  </span>
-        <span class="example-margin" *ngFor="let year of allRacesByYear">
-        <mat-checkbox [(ngModel)]="year.show"
-                      (ngModelChange)="updateAllComplete()">
-          {{year.date}}
-        </mat-checkbox>
-  </span>
-      </section>
-      <div *ngFor="let year of allRacesByYear" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
-        <div *ngIf="year.show">
-          <mat-list>
-            <mat-list-item>{{year.date}}</mat-list-item>
-            <mat-divider></mat-divider>
-          </mat-list>
-          <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="start">
-            <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="100%" *ngFor="let race of year.races">
-              <mat-card class="mat-elevation-z2" style="background-color: #004643">
-                <mat-card-title style="color: #fffffe">{{race.name}}</mat-card-title>
-                <mat-card-subtitle style="color: #fffffe">{{race.date | date:'mediumDate'}}</mat-card-subtitle>
-                <mat-card-content>
-                  <p style="color: #abd1c6">
-                    <b>Distancia:</b> {{race.distance}}k<br>
-                    <b>Tiempo:</b> {{race.time}}<br>
-                  </p>
-                </mat-card-content>
-              </mat-card>
+      <mat-accordion class="example-headers-align" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+        <div>
+          <mat-expansion-panel
+            class="example-headers-align"
+            *ngFor="let year of allRacesByYear; let i = index"
+            [expanded]="i === 1"
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b>{{year.date}}</b>
+              </mat-panel-title>
+              <mat-panel-description>
+                <b>
+                  <small>
+                    <div *ngIf="year.races.length == 1">
+                      {{year.races.length}} carrera
+                    </div>
+                    <div *ngIf="year.races.length > 1">
+                      {{year.races.length}} carreras
+                    </div>
+                  </small>
+                </b>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="space-evenly">
+              <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="100%" *ngFor="let race of year.races">
+                <div
+                  class="top-bar-color"
+                  [style.background-color]="race.color"
+                ></div>
+                <mat-card class="mat-elevation-z6">
+                  <mat-card-header>
+                    <img mat-card-avatar src="../../../assets/mountain-icon.png"
+                         alt="Mountain Icon">
+                    <mat-card-title>{{race.name}}</mat-card-title>
+                    <mat-card-subtitle>{{race.date | date:'mediumDate'}}</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>
+                      <b>Distancia:</b> {{race.distance}}k<br>
+                      <b>Tiempo:</b> {{race.time}}<br>
+                    </p>
+                  </mat-card-content>
+                  <mat-card-actions>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
             </div>
-          </div>
+          </mat-expansion-panel>
         </div>
-      </div>
+      </mat-accordion>
     </div>
   </div>
 </div>

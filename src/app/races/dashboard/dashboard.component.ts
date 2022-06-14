@@ -5,7 +5,6 @@ import { AuthService } from "../../services/auth.service";
 import { Login } from "../../interfaces/login";
 import { AddRaceComponent } from "../add-race/add-race.component";
 import { MatDialog } from "@angular/material/dialog";
-import { groupBy, map, mergeMap, of, reduce, toArray } from "rxjs";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
