@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import localeEsAr from '@angular/common/locales/es-AR';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,6 +39,9 @@ import { CoolSocialLoginButtonsModule } from "@angular-cool/social-login-buttons
 import { MatListModule } from "@angular/material/list";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { registerLocaleData } from "@angular/common";
+
+registerLocaleData(localeEsAr, 'es-Ar');
 
 @NgModule({
   declarations: [
@@ -80,7 +84,13 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatCheckboxModule,
     FormsModule
   ],
-  providers: [AuthService, GoogleAuthProvider],
+  providers: [
+    AuthService,
+    GoogleAuthProvider,
+    {
+      provide: LOCALE_ID, useValue: 'es-Ar'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

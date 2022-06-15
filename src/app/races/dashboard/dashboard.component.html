@@ -12,7 +12,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="openDialog()">
+        <button mat-menu-item (click)="openRaceDialog('add')">
           <mat-icon>add</mat-icon>
           <span>Add Race</span>
         </button>
@@ -30,7 +30,8 @@
         <div>
           <mat-expansion-panel
             class="example-headers-align"
-            *ngFor="let year of allRacesByYear; let i = index">
+            *ngFor="let year of allRacesByYear; let i = index"
+            [expanded]="i === 0">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <b>{{year.date}}</b>
@@ -59,7 +60,7 @@
                     <img mat-card-avatar src="../../../assets/mountain-icon.png"
                          alt="Mountain Icon">
                     <mat-card-title>{{race.name}}</mat-card-title>
-                    <mat-card-subtitle>{{race.date | date:'mediumDate'}}</mat-card-subtitle>
+                    <mat-card-subtitle>{{race.date | date:'longDate'}}</mat-card-subtitle>
                   </mat-card-header>
                   <mat-card-content>
                     <p>
@@ -67,7 +68,9 @@
                       <b>Tiempo:</b> {{race.time}}<br>
                     </p>
                   </mat-card-content>
-                  <mat-card-actions>
+                  <mat-card-actions align="end">
+                    <button mat-stroked-button (click)="openRaceDialog('edit', race.$key)">Editar</button>
+                    <button mat-stroked-button color="warn" (click)="openDeleteRaceDialog(race.$key)">Eliminar</button>
                   </mat-card-actions>
                 </mat-card>
               </div>

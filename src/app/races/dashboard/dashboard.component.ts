@@ -103,8 +103,12 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AddRaceComponent);
+  addRaceDialog(action: string) {
+    const dialogRef = this.dialog.open(AddRaceComponent, {
+      data: {
+        action
+      }
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${ result }`);
       if (result) {
@@ -115,6 +119,47 @@ export class DashboardComponent implements OnInit {
         });
       }
     })
+  }
+
+  openDeleteRaceDialog(raceKey: string) {
+    this.crudApi.deleteRace(raceKey);
+    this.snackBar.open('Carrera eliminada!!', 'Cerrar', {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 3000,
+    });
+  }
+
+  editRaceDialog(raceKey: string, action: string) {
+    this.crudApi.getRace(raceKey).valueChanges().subscribe(data => {
+      const dialogRef = this.dialog.open(AddRaceComponent, {
+        data: {
+          ...data,
+          action
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result.edit) {
+          this.snackBar.open('Carrera editada!!', 'Cerrar', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 3000,
+          });
+        }
+      });
+    })
+  }
+
+  openRaceDialog(action: string, raceKey: string = '') {
+    if (raceKey && action === 'edit') {
+      this.editRaceDialog(raceKey, action);
+      return;
+    }
+    if (action === 'add') {
+      this.addRaceDialog(action);
+      return;
+    }
   }
 
   groupRacesByYear() {
@@ -134,7 +179,7 @@ export class DashboardComponent implements OnInit {
         races: groups[date]
       };
     });
-    groupArrays.sort((a: any,b: any) => {
+    groupArrays.sort((a: any, b: any) => {
       if (a.date < b.date) return 1;
       if (a.date > b.date) return -1;
       return 0;

@@ -5,7 +5,6 @@ import {
   AngularFireObject,
 } from '@angular/fire/compat/database';
 import { Race } from "../interfaces/race";
-import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,6 @@ export class CrudService {
   }
 
   addRace(race: Race) {
-    console.log(this.userUid);
     this.racesRef = this.db.list(`${this.userUid}`);
     this.racesRef.push({
       name: race.name,
@@ -32,7 +30,8 @@ export class CrudService {
   }
 
   getRace(id: string) {
-    this.raceRef = this.db.object('races-list/' + id);
+    this.raceRef = this.db.object(`${this.userUid}/${id}`);
+    return this.raceRef;
   }
 
   getRacesList() {
@@ -50,7 +49,7 @@ export class CrudService {
   }
 
   deleteRace(id: string) {
-    this.raceRef = this.db.object('races-list/' + id)
-    this.racesRef.remove();
+    this.raceRef = this.db.object(`${this.userUid}/${id}`);
+    this.raceRef.remove();
   }
 }
