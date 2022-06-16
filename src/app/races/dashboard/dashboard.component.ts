@@ -46,35 +46,7 @@ export class DashboardComponent implements OnInit {
         this.loading = false;
       })
       this.groupRacesByYear();
-      this.setSelectedYears()
     })
-  }
-
-  updateAllComplete() {
-    this.allComplete = this.allRacesByYear.races != null && this.allRacesByYear.races.every((t: { show: any; }) => t.show);
-  }
-
-  someComplete(): boolean {
-    if (this.allRacesByYear.races == null) {
-      return false;
-    }
-    return this.allRacesByYear.races.filter((t: { show: any; }) => t.show).length > 0 && !this.allComplete;
-  }
-
-  setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.allRacesByYear == null) {
-      return;
-    }
-    this.allRacesByYear.forEach((t: any) => {
-      t.show = completed
-    });
-  }
-
-  setSelectedYears() {
-    this.allRacesByYear.forEach((year: any) => {
-      year.show = true;
-    });
   }
 
   setRaceColor(race: Race) {

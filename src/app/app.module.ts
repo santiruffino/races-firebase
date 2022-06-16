@@ -28,7 +28,7 @@ import { GoogleAuthProvider } from "@angular/fire/auth";
 import { MatCardModule } from "@angular/material/card";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { FlexModule } from "@angular/flex-layout";
+import { FlexLayoutModule, FlexModule } from "@angular/flex-layout";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
@@ -40,6 +40,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { registerLocaleData } from "@angular/common";
+import { ResponsiveToolbarComponent } from './shared/responsive-toolbar/responsive-toolbar.component';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -51,7 +52,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     AddRaceComponent,
     DashboardComponent,
     EditRaceComponent,
-    IntroCardComponent
+    IntroCardComponent,
+    ResponsiveToolbarComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -82,7 +84,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     MatListModule,
     MatChipsModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [
     AuthService,
