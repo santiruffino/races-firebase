@@ -8,7 +8,7 @@ import { SignInComponent } from "./auth/sign-in/sign-in.component";
 import { SignUpComponent } from "./auth/sign-up/sign-up.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/view-races', pathMatch: 'full' },
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'register-race', component: AddRaceComponent },
   { path: 'view-races', component: DashboardComponent },
   { path: 'edit-race/:id', component: EditRaceComponent },
