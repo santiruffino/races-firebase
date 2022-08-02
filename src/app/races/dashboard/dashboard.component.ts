@@ -40,11 +40,11 @@ export class DashboardComponent implements OnInit {
       data.forEach(item => {
         let a: any = item.payload.toJSON();
         a['$key'] = item.key;
-        // a['color'] = this.setRaceColor(a);
         this.allRaces.push(a as Race);
       })
       this.groupRacesByYear();
       this.orderRaces();
+      this.loading = false;
     })
   };
 

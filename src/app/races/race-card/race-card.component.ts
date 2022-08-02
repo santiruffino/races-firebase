@@ -32,7 +32,7 @@ export class RaceCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setRaceColor(this.race);
+    // this.setRaceColor(this.race);
   };
 
   setRaceColor(race: Race) {
@@ -95,6 +95,7 @@ export class RaceCardComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
+        console.log(result);
         if (result.edit) {
           this.snackBar.open('Carrera editada!!', 'Cerrar', {
             horizontalPosition: 'center',

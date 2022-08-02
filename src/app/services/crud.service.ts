@@ -26,7 +26,8 @@ export class CrudService {
       date: race.date,
       time: race.time,
       distance: race.distance,
-      type: race.type
+      type: race.type,
+      color: race.color
     })
   }
 
@@ -46,7 +47,8 @@ export class CrudService {
       date: race.date,
       time: race.time,
       distance: race.distance,
-      type: race.type
+      type: race.type,
+      color: race.color
     })
   }
 

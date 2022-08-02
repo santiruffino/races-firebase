@@ -19,12 +19,21 @@
 
         <mat-form-field class="form-field" appearance="outline">
           <mat-label>Distancia</mat-label>
-          <input matInput formControlName="distance" required>
+          <input type="number" matInput formControlName="distance" required>
         </mat-form-field>
 
         <mat-form-field class="form-field" appearance="outline">
           <mat-label>Tiempo (hh:mm:ss)</mat-label>
-          <input matInput formControlName="time" required>
+          <input type="time" matInput formControlName="time" required>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Tipo de terreno</mat-label>
+          <mat-select required formControlName="type">
+            <mat-option *ngFor="let raceType of racesType" [value]="raceType.value">
+              {{raceType.label}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </form>
     </div>

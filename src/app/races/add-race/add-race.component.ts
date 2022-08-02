@@ -17,7 +17,15 @@ export class AddRaceComponent implements OnInit {
     date: ['', Validators.required],
     time: ['', Validators.required],
     type: ['', Validators.required],
+    color: '',
   });
+
+  racesType: any = [
+    {value: 'street', label: 'Calle'},
+    {value: 'trail', label: 'Trail'},
+    {value: 'track', label: 'Pista'},
+    {value: 'mix', label: 'Mixto'}
+  ]
 
   constructor(
     public crudApi: CrudService,
@@ -49,9 +57,22 @@ export class AddRaceComponent implements OnInit {
     this.raceForm.reset()
   }
 
+  setRaceColor(race: Race) {
+    if (race.distance <= 10) {
+      return 'blue';
+    } else if (race.distance > 10 && race.distance < 21) {
+      return 'orange';
+    } else if (race.distance >= 21) {
+      return 'red';
+    } else {
+      return 'white'
+    }
+  };
+
   submitRaceData() {
     const oldDate = this.raceForm.value.date;
     this.raceForm.controls['date'].setValue(oldDate.toISOString())
+    this.raceForm.controls['color'].setValue(this.setRaceColor(this.raceForm.value))
     this.crudApi.addRace(this.raceForm.value);
     this.resetForm();
     this.dialogRef.close({add: true});
@@ -60,6 +81,8 @@ export class AddRaceComponent implements OnInit {
   submitEditRaceData() {
     const oldDate = this.raceForm.value.date;
     this.raceForm.controls['date'].setValue(oldDate.toISOString())
+    this.raceForm.controls['color'].setValue(this.setRaceColor(this.raceForm.value))
+    console.log(this.raceForm.value);
     this.crudApi.updateRace(this.raceForm.value);
     this.resetForm();
     this.dialogRef.close({edit: true});

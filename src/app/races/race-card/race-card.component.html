@@ -1,12 +1,12 @@
-<div style="width: 100%">
+<div style="min-width: 100%">
   <div
     class="top-bar-color"
     [style.background-color]="race.color"
   ></div>
   <mat-card class="mat-elevation-z6">
     <mat-card-header>
-      <img mat-card-avatar src="../../../assets/mountain-icon.png"
-           alt="Mountain Icon">
+      <img mat-card-avatar src="../../../assets/{{race.type}}.png"
+           alt="{{race.type}} Icon">
       <mat-card-title>{{race.name}}</mat-card-title>
       <mat-card-subtitle>{{race.date | date:'longDate'}}</mat-card-subtitle>
     </mat-card-header>
