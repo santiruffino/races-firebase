@@ -5,4 +5,5 @@ export interface Race {
   date: Date;
   time: string;
   color: string;
+  type: string;
 }

@@ -1,0 +1,24 @@
+<div style="width: 100%">
+  <div
+    class="top-bar-color"
+    [style.background-color]="race.color"
+  ></div>
+  <mat-card class="mat-elevation-z6">
+    <mat-card-header>
+      <img mat-card-avatar src="../../../assets/mountain-icon.png"
+           alt="Mountain Icon">
+      <mat-card-title>{{race.name}}</mat-card-title>
+      <mat-card-subtitle>{{race.date | date:'longDate'}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <b>Distancia:</b> {{race.distance}}k<br>
+        <b>Tiempo:</b> {{race.time}}<br>
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-stroked-button (click)="openRaceDialog('edit', race.$key)">Editar</button>
+      <button mat-stroked-button color="warn" (click)="openDeleteRaceDialog(race.$key)">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

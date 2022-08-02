@@ -25,7 +25,8 @@ export class CrudService {
       name: race.name,
       date: race.date,
       time: race.time,
-      distance: race.distance
+      distance: race.distance,
+      type: race.type
     })
   }
 
@@ -44,7 +45,8 @@ export class CrudService {
       name: race.name,
       date: race.date,
       time: race.time,
-      distance: race.distance
+      distance: race.distance,
+      type: race.type
     })
   }
 

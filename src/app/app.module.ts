@@ -41,6 +41,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { registerLocaleData } from "@angular/common";
 import { ResponsiveToolbarComponent } from './shared/responsive-toolbar/responsive-toolbar.component';
+import { RaceCardComponent } from './races/race-card/race-card.component';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -53,7 +54,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     DashboardComponent,
     EditRaceComponent,
     IntroCardComponent,
-    ResponsiveToolbarComponent
+    ResponsiveToolbarComponent,
+    RaceCardComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

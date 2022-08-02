@@ -3,7 +3,6 @@ import { Race } from "../../interfaces/race";
 import { CrudService } from "../../services/crud.service";
 import { AuthService } from "../../services/auth.service";
 import { Login } from "../../interfaces/login";
-import { AddRaceComponent } from "../add-race/add-race.component";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -26,9 +25,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public crudApi: CrudService,
-    public authService: AuthService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public authService: AuthService
   ) {
   }
 
@@ -41,25 +40,13 @@ export class DashboardComponent implements OnInit {
       data.forEach(item => {
         let a: any = item.payload.toJSON();
         a['$key'] = item.key;
-        a['color'] = this.setRaceColor(a);
+        // a['color'] = this.setRaceColor(a);
         this.allRaces.push(a as Race);
-        this.loading = false;
       })
       this.groupRacesByYear();
+      this.orderRaces();
     })
-  }
-
-  setRaceColor(race: Race) {
-    if (race.distance <= 10) {
-      return 'blue';
-    } else if (race.distance > 10 && race.distance < 21) {
-      return 'orange';
-    } else if (race.distance >= 21) {
-      return 'red';
-    } else {
-      return 'white'
-    }
-  }
+  };
 
   dataState() {
     this.crudApi.getRacesList().valueChanges().subscribe(data => {
@@ -73,66 +60,7 @@ export class DashboardComponent implements OnInit {
 
       }
     })
-  }
-
-  addRaceDialog(action: string) {
-    const dialogRef = this.dialog.open(AddRaceComponent, {
-      data: {
-        action
-      }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${ result }`);
-      if (result) {
-        this.snackBar.open('Carrera creada!!', 'Cerrar', {
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          duration: 3000,
-        });
-      }
-    })
-  }
-
-  openDeleteRaceDialog(raceKey: string) {
-    this.crudApi.deleteRace(raceKey);
-    this.snackBar.open('Carrera eliminada!!', 'Cerrar', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      duration: 3000,
-    });
-  }
-
-  editRaceDialog(raceKey: string, action: string) {
-    this.crudApi.getRace(raceKey).valueChanges().subscribe(data => {
-      const dialogRef = this.dialog.open(AddRaceComponent, {
-        data: {
-          ...data,
-          action
-        }
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-        if (result.edit) {
-          this.snackBar.open('Carrera editada!!', 'Cerrar', {
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-            duration: 3000,
-          });
-        }
-      });
-    })
-  }
-
-  openRaceDialog(action: string, raceKey: string = '') {
-    if (raceKey && action === 'edit') {
-      this.editRaceDialog(raceKey, action);
-      return;
-    }
-    if (action === 'add') {
-      this.addRaceDialog(action);
-      return;
-    }
-  }
+  };
 
   groupRacesByYear() {
     const groups = this.allRaces.reduce((groups: any, race) => {
@@ -155,7 +83,19 @@ export class DashboardComponent implements OnInit {
       if (a.date < b.date) return 1;
       if (a.date > b.date) return -1;
       return 0;
-    })
+    });
     this.allRacesByYear = groupArrays;
+  };
+
+  orderRaces() {
+    this.allRacesByYear.forEach((a: any) => {
+      a.races.sort((a: any, b: any) => {
+        if (a.date < b.date) return 1;
+        if (a.date > b.date) return -1;
+        return 0;
+      });
+    });
   }
+
+
 }

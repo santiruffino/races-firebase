@@ -16,6 +16,7 @@ export class AddRaceComponent implements OnInit {
     distance: ['', Validators.required],
     date: ['', Validators.required],
     time: ['', Validators.required],
+    type: ['', Validators.required],
   });
 
   constructor(
@@ -37,6 +38,7 @@ export class AddRaceComponent implements OnInit {
     this.raceForm.get('distance')?.setValue(raceData.distance);
     this.raceForm.get('date')?.setValue(new Date(raceData.date));
     this.raceForm.get('time')?.setValue(raceData.time);
+    this.raceForm.get('type')?.setValue(raceData.type);
   }
 
   close() {
@@ -77,5 +79,9 @@ export class AddRaceComponent implements OnInit {
 
   get raceTime() {
     return this.raceForm.get('time')
+  }
+
+  get raceType() {
+    return this.raceForm.get('type')
   }
 }

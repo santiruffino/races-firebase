@@ -2,9 +2,9 @@
   <div fxFlex="70%" fxFlex.xs="95%" fxFlex.sm="95%" class="content">
     <app-responsive-toolbar></app-responsive-toolbar>
     <div fxLayout="row wrap" fxLayoutGap="16px grid" class="main-content">
-      <div *ngIf="loading" class="loading">
-        <mat-spinner></mat-spinner>
-      </div>
+      <!--      <div *ngIf="loading" class="loading">-->
+      <!--        <mat-spinner></mat-spinner>-->
+      <!--      </div>-->
       <mat-accordion class="example-headers-align" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%" multi>
         <div>
           <mat-expansion-panel
@@ -29,29 +29,8 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="space-evenly">
-              <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="100%" *ngFor="let race of year.races">
-                <div
-                  class="top-bar-color"
-                  [style.background-color]="race.color"
-                ></div>
-                <mat-card class="mat-elevation-z6">
-                  <mat-card-header>
-                    <img mat-card-avatar src="../../../assets/mountain-icon.png"
-                         alt="Mountain Icon">
-                    <mat-card-title>{{race.name}}</mat-card-title>
-                    <mat-card-subtitle>{{race.date | date:'longDate'}}</mat-card-subtitle>
-                  </mat-card-header>
-                  <mat-card-content>
-                    <p>
-                      <b>Distancia:</b> {{race.distance}}k<br>
-                      <b>Tiempo:</b> {{race.time}}<br>
-                    </p>
-                  </mat-card-content>
-                  <mat-card-actions align="end">
-                    <button mat-stroked-button (click)="openRaceDialog('edit', race.$key)">Editar</button>
-                    <button mat-stroked-button color="warn" (click)="openDeleteRaceDialog(race.$key)">Eliminar</button>
-                  </mat-card-actions>
-                </mat-card>
+              <div *ngFor="let race of year.races">
+                <app-race-card [race]="race"></app-race-card>
               </div>
             </div>
           </mat-expansion-panel>
