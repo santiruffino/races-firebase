@@ -5,7 +5,8 @@
 .all-container {
   display: flex;
   min-height: 100%;
-  background: #00473e;
+  background: #4c7972;
+  background: #abd1c6;
 }
 
 .all-content {
@@ -15,7 +16,7 @@
 .container {
   position: relative;
   z-index: 1;
-  max-width: 300px;
+  /*max-width: 300px;*/
   margin: 0 auto;
 }
 
@@ -91,6 +92,7 @@ button.ghost {
 
 form {
   background-color: #f2f7f5;
+  /*background-color: #E8E6E7;*/
   display: flex;
   align-items: center;
   justify-content: center;

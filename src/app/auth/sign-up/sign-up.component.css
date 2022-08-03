@@ -1,17 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
+.all-content {
+  margin: auto;
+  height: 100%;
+  min-height: 100%;
 }
 
-* {
-  box-sizing: border-box;
+.all-container {
+  min-height: 100%;
+  background: #00473e;
+  margin: auto;
 }
+
 
 body {
   background: #f6f5f7;
@@ -37,7 +38,7 @@ p {
   font-size: 14px;
   font-weight: 100;
   line-height: 20px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   margin: 20px 0 30px;
 }
 
@@ -98,14 +99,13 @@ input {
 }
 
 .container {
+  margin: 0 auto;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25),
   0 10px 10px rgba(0,0,0,0.22);
   position: relative;
   overflow: hidden;
-  width: 768px;
-  max-width: 100%;
   min-height: 480px;
 }
 
@@ -118,7 +118,7 @@ input {
 
 .sign-in-container {
   left: 0;
-  width: 50%;
+  width: 100%;
   z-index: 2;
 }
 

@@ -97,6 +97,7 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
+        localStorage.setItem('user', JSON.stringify(result.user));
         this.setUserData(result.user);
         this.ngZone.run(() => {
           this.router.navigate(['view-races']);
