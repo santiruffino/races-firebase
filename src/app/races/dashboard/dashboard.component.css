@@ -49,10 +49,11 @@ mat-card {
   min-height: 90vh;
   margin: auto;
   padding: 16px;
+  background: #f2f7f5;
   /*background: rgba(0, 0, 0, 0.65);*/
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /*box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);*/
+  /*backdrop-filter: blur(20px);*/
+  /*-webkit-backdrop-filter: blur(20px);*/
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18)
 }

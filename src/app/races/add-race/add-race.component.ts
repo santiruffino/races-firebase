@@ -82,7 +82,6 @@ export class AddRaceComponent implements OnInit {
     const oldDate = this.raceForm.value.date;
     this.raceForm.controls['date'].setValue(oldDate.toISOString())
     this.raceForm.controls['color'].setValue(this.setRaceColor(this.raceForm.value))
-    console.log(this.raceForm.value);
     this.crudApi.updateRace(this.raceForm.value);
     this.resetForm();
     this.dialogRef.close({edit: true});
