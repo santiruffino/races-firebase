@@ -6,11 +6,12 @@ import { EditRaceComponent } from "./races/edit-race/edit-race.component";
 import { RouterModule, Routes } from "@angular/router";
 import { SignInComponent } from "./auth/sign-in/sign-in.component";
 import { SignUpComponent } from "./auth/sign-up/sign-up.component";
+import { AuthGuard } from "./guard/auth.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: '', redirectTo: '/view-races', pathMatch: 'full' },
   { path: 'register-race', component: AddRaceComponent },
-  { path: 'view-races', component: DashboardComponent },
+  { path: 'view-races', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'edit-race/:id', component: EditRaceComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
