@@ -1,14 +1,21 @@
 <div class="all-container">
   <div fxFlex="70%" fxFlex.xs="95%" fxFlex.sm="95%" class="content">
     <app-responsive-toolbar></app-responsive-toolbar>
-    <div fxLayout="row wrap" fxLayoutGap="16px grid" class="main-content">
+    <div fxLayout="row wrap" fxLayoutGap="16px" class="main-content">
             <div *ngIf="loading" class="loading">
               <mat-spinner></mat-spinner>
             </div>
+      <div *ngIf="noData" style="width: 100%; display: flex;" class="empty-content">
+        <img
+          style="width: 30%; margin: auto"
+          src = "./assets/no_data.svg" alt="Mi SVG feliz"/>
+        <h1 style="width: 100%">No hay carreras cargadas</h1>
+      </div>
       <mat-accordion class="example-headers-align" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%" multi>
         <div>
           <mat-expansion-panel
-            class="example-headers-align"
+            class="example-headers-align mat-elevation-z0"
+            [ngClass]="(i % 2) == 0 ? 'grey-row' : 'white-row'"
             *ngFor="let year of allRacesByYear; let i = index"
             [expanded]="i === 0">
             <mat-expansion-panel-header>

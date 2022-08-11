@@ -42,6 +42,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { registerLocaleData } from "@angular/common";
 import { ResponsiveToolbarComponent } from './shared/responsive-toolbar/responsive-toolbar.component';
 import { RaceCardComponent } from './races/race-card/race-card.component';
+import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -55,7 +56,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     EditRaceComponent,
     IntroCardComponent,
     ResponsiveToolbarComponent,
-    RaceCardComponent
+    RaceCardComponent,
+    VerifyEmailComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

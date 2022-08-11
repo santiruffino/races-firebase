@@ -7,6 +7,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { SignInComponent } from "./auth/sign-in/sign-in.component";
 import { SignUpComponent } from "./auth/sign-up/sign-up.component";
 import { AuthGuard } from "./guard/auth.guard";
+import { VerifyEmailComponent } from "./auth/verify-email/verify-email.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/view-races', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'edit-race/:id', component: EditRaceComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: 'verify-email-address', component: VerifyEmailComponent },
 ];
 
 @NgModule({

@@ -10,10 +10,11 @@
             </cool-google-button>
           </div>
           <span>or use your account</span>
-          <input type="email" placeholder="Email"/>
-          <input type="password" placeholder="Password"/>
-          <a href="#">Forgot your password?</a>
-          <button>Sign In</button>
+          <input type="email" placeholder="Email" #email/>
+          <input type="password" placeholder="Password" #password />
+          <a routerLink="/forgot-password" href="#">Forgot your password?</a>
+          <button (click)="authService.signIn(email.value, password.value)">Sign In</button>
+          <a routerLink="/sign-up">Crear una cuenta</a>
         </form>
       </div>
     </div>

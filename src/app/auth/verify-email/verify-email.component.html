@@ -1,0 +1,16 @@
+<div class="all-container">
+  <div class="all-content" fxFlex="40%" fxFlex.xs="90%" fxFlex.sm="90%">
+    <div class="container" id="container">
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>Gracias por registrarte!</h1>
+          <div *ngIf="authService.userData as user">
+          <p>Enviamos un email de confirmacion a la direccion de correo <strong>{{user.email}}</strong></p>
+          <p>Por favor, revisa tu correo y haz click en el link para verificar la cuenta <strong>{{user.email}}</strong></p>
+          </div>
+          <a (click)="authService.sendVerificationMail()">Reenviar email</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

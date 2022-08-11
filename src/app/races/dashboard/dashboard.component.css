@@ -1,11 +1,14 @@
 .example-headers-align {
-  /*margin-top: 10px !important;*/
-  margin-bottom: 10px !important;
+  border: 5px black;
 }
 
-/*.mat-expanded {*/
-/*  margin-bottom: 10px !important;*/
-/*}*/
+.white-row {
+  background: #FFFFFF;
+}
+
+.grey-row {
+  background: #f2f2f2;
+}
 
 .main-content {
   padding-top: 16px;
@@ -48,12 +51,7 @@ mat-card {
 .content {
   min-height: 90vh;
   margin: auto;
-  padding: 16px;
-  background: #f2f7f5;
-  /*background: rgba(0, 0, 0, 0.65);*/
-  /*box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);*/
-  /*backdrop-filter: blur(20px);*/
-  /*-webkit-backdrop-filter: blur(20px);*/
+  background: #ffffff;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18)
 }
